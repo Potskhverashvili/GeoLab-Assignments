@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="create_account"> შექმენი ანგარიში</string>"
+    <string name="email_text">მეილი</string>
+    <string name="password_text">პასვორდი</string>
+    <string name="continue_button">გააგრძელე</string>
+
+</resources>

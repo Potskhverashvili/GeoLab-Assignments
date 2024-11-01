@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">MiniShop</string>
+    <string name="app_name" translatable="false">MiniShop</string>
+
+    <string name="create_account">Create Account</string>"
+    <string name="email_text">email</string>
+    <string name="password_text">password</string>
+    <string name="continue_button">Continue</string>
+
+
 </resources>

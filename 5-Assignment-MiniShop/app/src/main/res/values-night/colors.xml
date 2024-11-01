@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background_color">#1D182A</color>"
+    <color name="text_field_background">#342F3F</color>
+    <color name="text_hint_color">#FFFFFF</color>
+    <color name="create_text_color">#FFFFFF</color>
+    <color name="input_text_color">#FFFFFF</color>
+</resources>
