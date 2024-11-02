@@ -5,5 +5,7 @@
     <string name="email_text">მეილი</string>
     <string name="password_text">პასვორდი</string>
     <string name="continue_button">გააგრძელე</string>
+    <string name="order_product">შეუკვთე</string>"
+    <string name="product_shoes">ფეხსაცმელი</string>
 
 </resources>

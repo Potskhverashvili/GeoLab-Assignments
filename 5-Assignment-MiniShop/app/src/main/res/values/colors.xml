@@ -3,9 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background_color">#FFFFFF</color>"
+    <color name="background_color">#DADAE7</color>"
     <color name="text_field_background">#F4F4F4</color>
     <color name="text_hint_color">#272727</color>
-    <color name="create_text_color">#272727</color>
+    <color name="text_color">#272727</color>
     <color name="input_text_color">#FF000000</color>
 </resources>
