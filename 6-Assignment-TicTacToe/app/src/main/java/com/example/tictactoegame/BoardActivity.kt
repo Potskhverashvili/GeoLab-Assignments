@@ -24,6 +24,7 @@ class BoardActivity : AppCompatActivity() {
     // ------------------------------- Attributes --------------------------
     private var currentSymbol = "X"
 
+    // ---------------------Indexes 0  1  2  3  4  5  6  7  8
     private val gameState = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
 
     private var winningPositions: Array<IntArray> = arrayOf(
@@ -40,8 +41,12 @@ class BoardActivity : AppCompatActivity() {
 
     // Check Winner
     private fun checkWinner(): Boolean {
-        with(binding) {
-            if (button0.text == button1.text && button1.text == button2.text) {
+        for (wingPosition in winningPositions) {
+            if (
+                gameState[wingPosition[0]] != 2
+                && gameState[wingPosition[0]] == gameState[wingPosition[1]]
+                && gameState[wingPosition[1]] == gameState[wingPosition[2]]
+            ) {
                 return true
             }
         }
@@ -50,7 +55,7 @@ class BoardActivity : AppCompatActivity() {
 
     // Sets up click listeners for all the buttons
     private fun setListener() {
-        d("MyLog", "setListener")
+
         with(binding) {
             listOf(
                 button0,
@@ -72,12 +77,24 @@ class BoardActivity : AppCompatActivity() {
 
 
     private fun click(button: Button) {
-
         if (button.text.isEmpty()) {//Checks if the button's text is empty
             button.text = currentSymbol // sets the button's text to the current symbol
+
+            val buttonId = button.resources.getResourceEntryName(button.id)
+            val gameStatePointer = buttonId.last().digitToInt()
+
+
+            gameState[gameStatePointer] = if (currentSymbol == "X") 0 else 1
+
+            gameState.forEach {
+                println(it)
+            }
+            println("-------------")
+
             if (checkWinner()) {
                 Toast.makeText(this@BoardActivity, "Won", Toast.LENGTH_LONG).show()
             }
+
             currentSymbol = if (currentSymbol == "X") "O" else "X"  //Toggle Current Symbol
         }
     }
