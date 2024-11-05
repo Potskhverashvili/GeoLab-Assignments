@@ -20,9 +20,9 @@ class BoardActivity : AppCompatActivity() {
     private var currentSymbol = "X"
     private var clickCounter = 0
 
-    private val gameState = arrayOf("", "", "", "", "", "", "", "", "")
+    private val boardState = arrayOf("", "", "", "", "", "", "", "", "")
 
-    private var winningPositions: Array<IntArray> = arrayOf(
+    private var winningCombinations: Array<IntArray> = arrayOf(
         // Row
         intArrayOf(0, 1, 2), intArrayOf(3, 4, 5), intArrayOf(6, 7, 8),
         // Column
@@ -70,7 +70,7 @@ class BoardActivity : AppCompatActivity() {
 
             // ------------- Get Button "Id" --------------------
             val buttonId = getButtonId(button)
-            gameState[buttonId] = currentSymbol
+            boardState[buttonId] = currentSymbol
 
             // -------------- Check Winner ----------------------
             if (checkWinner()) {
@@ -93,11 +93,11 @@ class BoardActivity : AppCompatActivity() {
 
     // Check Winner Method
     private fun checkWinner(): Boolean {
-        for (winingPosition in winningPositions) {
+        for (winingPosition in winningCombinations) {
             if (
-                gameState[winingPosition[0]].isNotEmpty()
-                && gameState[winingPosition[0]] == gameState[winingPosition[1]]
-                && gameState[winingPosition[1]] == gameState[winingPosition[2]]
+                boardState[winingPosition[0]].isNotEmpty()
+                && boardState[winingPosition[0]] == boardState[winingPosition[1]]
+                && boardState[winingPosition[1]] == boardState[winingPosition[2]]
             ) {
                 return true
             }
@@ -109,7 +109,7 @@ class BoardActivity : AppCompatActivity() {
     private fun resetGame() {
         clickCounter = 0
         currentSymbol = "X"
-        gameState.fill("")
+        boardState.fill("")
         with(binding) {
             listOf(
                 button0,
