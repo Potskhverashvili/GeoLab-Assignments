@@ -1,7 +1,6 @@
 package com.example.tictactoegame
 
 import android.os.Bundle
-import android.util.Log.d
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,19 +12,15 @@ class BoardActivity : AppCompatActivity() {
     private val binding by lazy { ActivityBoardBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        d("MyLog", "onCreate")
-
         setContentView(binding.root)
         setListener()
-
     }
-
 
     // ------------------------------- Attributes --------------------------
     private var currentSymbol = "X"
+    private var clickCounter = 0
 
-    // ---------------------Indexes 0  1  2  3  4  5  6  7  8
-    private val gameState = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
+    private val gameState = arrayOf("", "", "", "", "", "", "", "", "")
 
     private var winningPositions: Array<IntArray> = arrayOf(
         // Row
@@ -36,26 +31,16 @@ class BoardActivity : AppCompatActivity() {
         intArrayOf(0, 4, 8), intArrayOf(2, 4, 6)
     )
 
-
     // ----------------------------------- Helper Functions ---------------------------------------
-
-    // Check Winner
-    private fun checkWinner(): Boolean {
-        for (wingPosition in winningPositions) {
-            if (
-                gameState[wingPosition[0]] != 2
-                && gameState[wingPosition[0]] == gameState[wingPosition[1]]
-                && gameState[wingPosition[1]] == gameState[wingPosition[2]]
-            ) {
-                return true
-            }
-        }
-        return false
-    }
-
-    // Sets up click listeners for all the buttons
+    // Sets up click listeners for all buttons
     private fun setListener() {
 
+        // Reset Button
+        binding.restartButton.setOnClickListener {
+            resetGame()
+        }
+
+        // Grid Buttons
         with(binding) {
             listOf(
                 button0,
@@ -75,27 +60,70 @@ class BoardActivity : AppCompatActivity() {
         }
     }
 
-
+    // Click method For grid Buttons
     private fun click(button: Button) {
-        if (button.text.isEmpty()) {//Checks if the button's text is empty
-            button.text = currentSymbol // sets the button's text to the current symbol
+        //Checks if the button's text is empty and sets current symbol
+        if (button.text.isEmpty()) {
+            button.text = currentSymbol
 
-            val buttonId = button.resources.getResourceEntryName(button.id)
-            val gameStatePointer = buttonId.last().digitToInt()
+            clickCounter++
 
+            // ------------- Get Button "Id" --------------------
+            val buttonId = getButtonId(button)
+            gameState[buttonId] = currentSymbol
 
-            gameState[gameStatePointer] = if (currentSymbol == "X") 0 else 1
-
-            gameState.forEach {
-                println(it)
-            }
-            println("-------------")
-
+            // -------------- Check Winner ----------------------
             if (checkWinner()) {
-                Toast.makeText(this@BoardActivity, "Won", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@BoardActivity, "$currentSymbol Won!", Toast.LENGTH_SHORT).show()
+            } else if (clickCounter == 9) {
+                Toast.makeText(this@BoardActivity, "No Winner!", Toast.LENGTH_SHORT).show()
             }
 
-            currentSymbol = if (currentSymbol == "X") "O" else "X"  //Toggle Current Symbol
+            // ----------- Toggle Current Symbol -----------------
+            currentSymbol = if (currentSymbol == "X") "O" else "X"
+        }
+    }
+
+
+    // Get Button Id Method
+    private fun getButtonId(button: Button): Int {
+        val buttonId = button.resources.getResourceEntryName(button.id)
+        return buttonId.last().digitToInt()
+    }
+
+    // Check Winner Method
+    private fun checkWinner(): Boolean {
+        for (winingPosition in winningPositions) {
+            if (
+                gameState[winingPosition[0]].isNotEmpty()
+                && gameState[winingPosition[0]] == gameState[winingPosition[1]]
+                && gameState[winingPosition[1]] == gameState[winingPosition[2]]
+            ) {
+                return true
+            }
+        }
+        return false
+    }
+
+    // Reset Game Method
+    private fun resetGame() {
+        clickCounter = 0
+        currentSymbol = "X"
+        gameState.fill("")
+        with(binding) {
+            listOf(
+                button0,
+                button1,
+                button2,
+                button3,
+                button4,
+                button5,
+                button6,
+                button7,
+                button8
+            ).forEach { button ->
+                button.text = ""
+            }
         }
     }
 }

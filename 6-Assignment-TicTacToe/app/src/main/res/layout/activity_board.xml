@@ -5,8 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-
     tools:context=".BoardActivity">
 
 
@@ -15,6 +13,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/shape_grid_buttons"
+
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toStartOf="@+id/button4" />
@@ -53,6 +52,7 @@
         android:layout_height="50dp"
         android:background="@drawable/shape_grid_buttons"
         android:textSize="30sp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +94,20 @@
         android:background="@drawable/shape_grid_buttons"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restart_button"
+        android:textSize="16sp"
+        android:background= "@drawable/shape_restart_button"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
