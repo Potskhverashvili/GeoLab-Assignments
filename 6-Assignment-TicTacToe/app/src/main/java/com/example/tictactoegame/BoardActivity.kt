@@ -8,7 +8,6 @@ import com.example.tictactoegame.databinding.ActivityBoardBinding
 
 class BoardActivity : AppCompatActivity() {
 
-
     private val binding by lazy { ActivityBoardBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +18,6 @@ class BoardActivity : AppCompatActivity() {
     // ------------------------------- Attributes --------------------------
     private var currentSymbol = "X"
     private var clickCounter = 0
-
     private val boardState = arrayOf("", "", "", "", "", "", "", "", "")
 
     private var winningCombinations: Array<IntArray> = arrayOf(
@@ -66,6 +64,7 @@ class BoardActivity : AppCompatActivity() {
         if (button.text.isEmpty()) {
             button.text = currentSymbol
 
+            // Count game move
             clickCounter++
 
             // ------------- Get Button "Id" --------------------
@@ -78,12 +77,10 @@ class BoardActivity : AppCompatActivity() {
             } else if (clickCounter == 9) {
                 Toast.makeText(this@BoardActivity, "No Winner!", Toast.LENGTH_SHORT).show()
             }
-
             // ----------- Toggle Current Symbol -----------------
             currentSymbol = if (currentSymbol == "X") "O" else "X"
         }
     }
-
 
     // Get Button Id Method
     private fun getButtonId(button: Button): Int {
