@@ -8,18 +8,13 @@ import com.example.tictactoa_nxn.databinding.ActivityGridBinding
 
 class GridActivity : AppCompatActivity() {
 
-
     private val binding by lazy { ActivityGridBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
-
         fillGrid(gridSize)
         setListener()
-
-
     }
 
     // -------------------------------------- Attributes -----------------------------------------
@@ -52,7 +47,6 @@ class GridActivity : AppCompatActivity() {
         }
     }
 
-
     // --- dynamically define winning combinations ---
     private fun defineWiningCombination(gridSize: Int) {
 
@@ -67,16 +61,7 @@ class GridActivity : AppCompatActivity() {
             winingCombinations.add(row)
         }
 
-        // Column
-        /*for (j in 0 until gridSize){
-            val column = IntArray(gridSize)
-            for (i in 0 until gridSize){
-                column[i] =
-            }
-        }*/
-
     }
-
 
     // --- Sets up click listeners for all buttons ---
     private fun setListener() {
@@ -113,7 +98,5 @@ class GridActivity : AppCompatActivity() {
             currentSymbol = if (currentSymbol == "X") "O" else "X"
         }
     }
-
-
 }
 
