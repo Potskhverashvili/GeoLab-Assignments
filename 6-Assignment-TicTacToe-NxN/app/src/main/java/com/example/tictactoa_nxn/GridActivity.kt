@@ -2,6 +2,8 @@ package com.example.tictactoa_nxn
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoa_nxn.databinding.ActivityGridBinding
 
@@ -13,7 +15,8 @@ class GridActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        fillGrid(gridSize)
+        fillGrid()
+        defineWiningCombinations()
         setListener()
     }
 
@@ -23,45 +26,65 @@ class GridActivity : AppCompatActivity() {
     private var currentSymbol = "X"
     private var clickCounter = 0
     private val buttonsList = mutableListOf<Button>()
+    private val winningCombinations = mutableListOf<IntArray>()
     private val boardState = Array<String>(gridSize * gridSize) { "" }
 
-    // ----------------------------------- Helper Functions ---------------------------------------
-    // ------------ Fill Grid ------------
-    private fun fillGrid(gridSize: Int) {
 
-        val gridLayout = binding.gridLayout // Assuming you have a reference to the GridLayout:
+    // ----------------------------------- Helper Functions ---------------------------------------
+
+    // ------------ Fill Grid ------------
+    private fun fillGrid() {
+        val gridLayout = binding.gridLayout // reference to the GridLayout:
         gridLayout.columnCount = gridSize
         gridLayout.rowCount = gridSize
 
+        // Define buttons
         for (rowIndex in 0 until gridSize) {
             for (columnIndex in 0 until gridSize) {
-
                 val button = Button(this)
                 button.setBackgroundResource(R.drawable.shape_grid_buttons)
                 button.id = (rowIndex * gridSize + columnIndex)
 
                 buttonsList.add(button) //Save Buttons in the list
-                // button.layoutParams = GridLayout.LayoutParams()
+                button.layoutParams = GridLayout.LayoutParams()
+
                 gridLayout.addView(button)
             }
         }
     }
 
     // --- dynamically define winning combinations ---
-    private fun defineWiningCombination(gridSize: Int) {
-
-        val winingCombinations = mutableListOf<IntArray>()
-
+    private fun defineWiningCombinations() {
         // Row
         for (i in 0 until gridSize) {
             val row = IntArray(gridSize)
             for (j in 0 until gridSize) {
                 row[j] = i * gridSize + j
             }
-            winingCombinations.add(row)
+            winningCombinations.add(row)
         }
 
+        // Column
+        for (j in 0 until gridSize) {
+            val column = IntArray(gridSize)
+            for (i in 0 until gridSize) {
+                column[i] = i * gridSize + j
+            }
+            winningCombinations.add(column)
+        }
+
+        // Diagonals
+        val diagonal1 = IntArray(gridSize)
+        val diagonal2 = IntArray(gridSize)
+
+        for (i in 0 until gridSize) {
+            diagonal1[i] = i * gridSize + i
+            diagonal2[i] = i * gridSize + (gridSize - i - 1)
+        }
+        winningCombinations.add(diagonal1)
+        winningCombinations.add(diagonal2)
     }
+
 
     // --- Sets up click listeners for all buttons ---
     private fun setListener() {
@@ -70,7 +93,6 @@ class GridActivity : AppCompatActivity() {
                 click(button)
             }
         }
-
     }
 
     // ---- Click method For grid Buttons ----
@@ -78,25 +100,37 @@ class GridActivity : AppCompatActivity() {
         //Checks if the button's text is empty and sets current symbol
         if (button.text.isEmpty()) {
             button.text = currentSymbol
-
-
             boardState[button.id] = currentSymbol
-            println(boardState[button.id])
+            clickCounter++
+            checkWinner()
 
-            /*  // ------------- Get Button "Id" --------------------
-              val buttonId = getButtonId(button)
-              boardState[buttonId] = currentSymbol
-
-              // -------------- Check Winner ----------------------
-              if (checkWinner()) {
-                  Toast.makeText(this@BoardActivity, "$currentSymbol Won!", Toast.LENGTH_SHORT).show()
-              } else if (clickCounter == 9) {
-                  Toast.makeText(this@BoardActivity, "No Winner!", Toast.LENGTH_SHORT).show()
-              }*/
+            // -------------- Check Winner ----------------------
+            if (checkWinner()) {
+                Toast.makeText(this@GridActivity, "$currentSymbol Won!", Toast.LENGTH_SHORT).show()
+            } else if (clickCounter == 9) {
+                Toast.makeText(this@GridActivity, "No Winner!", Toast.LENGTH_SHORT).show()
+            }
 
             // ----------- Toggle Current Symbol -----------------
             currentSymbol = if (currentSymbol == "X") "O" else "X"
         }
+    }
+
+
+    private fun checkWinner(): Boolean {
+        for (combination in winningCombinations) {
+            val symbol = boardState[combination[0]]
+            var count = 0
+            for (element in combination) {
+                if (boardState[element].isNotEmpty() && boardState[element] == symbol) {
+                    count++
+                }
+            }
+            if (count == gridSize) {
+                return true
+            }
+        }
+        return false
     }
 }
 
