@@ -21,7 +21,8 @@ class GridActivity : AppCompatActivity() {
     }
 
     // -------------------------------------- Attributes -----------------------------------------
-    private val gridSize = 3
+
+    private var gridSize = 4
 
     private var currentSymbol = "X"
     private var clickCounter = 0
@@ -88,6 +89,12 @@ class GridActivity : AppCompatActivity() {
 
     // --- Sets up click listeners for all buttons ---
     private fun setListener() {
+
+        // Reset Button
+        binding.restartButton.setOnClickListener {
+            resetGame()
+        }
+
         buttonsList.forEach { button ->
             button.setOnClickListener {
                 click(button)
@@ -98,16 +105,16 @@ class GridActivity : AppCompatActivity() {
     // ---- Click method For grid Buttons ----
     private fun click(button: Button) {
         //Checks if the button's text is empty and sets current symbol
-        if (button.text.isEmpty()) {
+        if (button.text.isEmpty() && !checkWinner()) {
             button.text = currentSymbol
+
             boardState[button.id] = currentSymbol
             clickCounter++
-            checkWinner()
 
-            // -------------- Check Winner ----------------------
             if (checkWinner()) {
                 Toast.makeText(this@GridActivity, "$currentSymbol Won!", Toast.LENGTH_SHORT).show()
-            } else if (clickCounter == 9) {
+
+            } else if (clickCounter == gridSize * gridSize) {
                 Toast.makeText(this@GridActivity, "No Winner!", Toast.LENGTH_SHORT).show()
             }
 
@@ -117,6 +124,7 @@ class GridActivity : AppCompatActivity() {
     }
 
 
+    // ---------------- Check Winner Method -----------------------
     private fun checkWinner(): Boolean {
         for (combination in winningCombinations) {
             val symbol = boardState[combination[0]]
@@ -132,5 +140,18 @@ class GridActivity : AppCompatActivity() {
         }
         return false
     }
+
+
+    // Reset Game Method
+    private fun resetGame() {
+        clickCounter = 0
+        currentSymbol = "X"
+        boardState.fill("")
+        buttonsList.forEach { button ->
+            button.text = ""
+        }
+    }
+
 }
+
 

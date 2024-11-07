@@ -5,34 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    tools:context=".GridActivity">
+    tools:context=".InitialActivity">
 
 
-    <GridLayout
-        android:id="@+id/gridLayout"
+    <EditText
+        android:id="@+id/enterGridSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foregroundGravity="center"
 
+        android:autofillHints=""
+        android:background="#03A9F4"
+        android:inputType="numberDecimal"
+        android:text="@string/enter_nxn_size"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </GridLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
-        android:id="@+id/restartButton"
+        android:id="@+id/continueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_restart_btn"
-        android:padding="16dp"
-        android:text="@string/restart_button"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/shape_restart_btn"
+        android:text="Continue"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/enterGridSize"
+        app:layout_constraintVertical_bias="0.498" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

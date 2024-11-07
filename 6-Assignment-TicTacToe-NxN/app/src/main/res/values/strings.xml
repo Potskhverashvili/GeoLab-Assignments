@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TicTacToa-NxN</string>
+    <string name="restart_button">Restart</string>
+    <string name="enter_nxn_size">Enter NxN size</string>
 </resources>
