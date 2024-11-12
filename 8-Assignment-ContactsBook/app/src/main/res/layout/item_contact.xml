@@ -7,9 +7,8 @@
     android:background="@drawable/shape_contact"
     android:padding="10dp">
 
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/phoneNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -19,7 +18,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/contactNameImageView"
         app:layout_constraintStart_toEndOf="@+id/contactNameImageView"
         app:layout_constraintTop_toTopOf="@+id/contactNameImageView" />
-
 
     <TextView
         android:id="@+id/contactNameImageView"
@@ -42,9 +40,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/delete"
         android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneNumberTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
-
+        app:layout_constraintTop_toTopOf="@+id/phoneNumberTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
