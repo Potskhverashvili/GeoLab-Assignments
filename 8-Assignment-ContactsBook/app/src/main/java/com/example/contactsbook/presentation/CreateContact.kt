@@ -3,7 +3,7 @@ package com.example.contactsbook.presentation
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.contactsbook.data.Contact
+import com.example.contactsbook.data.ContactData
 import com.example.contactsbook.data.ContactRepository
 import com.example.contactsbook.databinding.ActivityCreateContactBinding
 
@@ -22,7 +22,7 @@ class CreateContact : AppCompatActivity() {
             // get username and phone number
             val username = usernameEditText.text.toString()
             val phoneNumber = phoneNumberEditText.text.toString()
-            val toAddContact = Contact(username = username, phoneNumber = phoneNumber)
+            val toAddContact = ContactData(username = username, phoneNumber = phoneNumber)
 
             // check if fields are empty
             if (username.isEmpty() || phoneNumber.isEmpty()) {
