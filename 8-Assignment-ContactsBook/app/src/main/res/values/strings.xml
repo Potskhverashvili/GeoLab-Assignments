@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ContactsBook</string>
+    <string name="contactName">A</string>
+    <string name="phone_number">599112233</string>
+    <string name="delete">delete</string>
+    <string name="add_contact">Add Contact </string>
+    <string name="person_icon">Person Icon</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="create_contact">Create</string>
+    <string name="toolbar_text">Contacts</string>
+</resources>
