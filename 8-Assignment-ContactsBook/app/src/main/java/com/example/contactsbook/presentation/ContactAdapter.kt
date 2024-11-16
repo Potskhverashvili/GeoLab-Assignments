@@ -36,9 +36,13 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
     // ---------------------------------- ViewHolder ----------------------------------
     inner class ContactViewHolder(private val binding: ItemContactBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+
         fun bind(contact: ContactData) = with(binding) {
             phoneNumberTextView.text = contact.phoneNumber
             contactNameImageView.text = contact.username.first().toString()
+
+
 
             deleteImageView.setOnClickListener {
                 onDeleteClick(contact)
