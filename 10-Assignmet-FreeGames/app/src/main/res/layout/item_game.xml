@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/shape_item_game"
+    android:padding="10dp"
+    android:paddingHorizontal="10dp"
+    tools:context=".presentation.GameActivity">
+
+
+    <ImageView
+        android:id="@+id/gameItemImageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/game_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_game"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/tarisland"
+        android:textColor="#000000"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/gameItemImageView"
+        app:layout_constraintStart_toEndOf="@+id/gameItemImageView"
+        app:layout_constraintTop_toTopOf="@+id/gameItemImageView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/game_link"
+        android:textColor="#F44336"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/gameItemImageView"
+        app:layout_constraintTop_toBottomOf="@+id/gameItemImageView" />
+
+
+    <TextView
+        android:id="@+id/gameLinkTextView"
+        android:layout_width="0sp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="18dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:text="@string/link"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

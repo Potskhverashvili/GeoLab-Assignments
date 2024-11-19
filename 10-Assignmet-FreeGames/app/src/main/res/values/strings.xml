@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Free Games</string>
+    <string name="game_link">Game Link:</string>
+    <string name="tarisland">Tarisland</string>
+    <string name="link">https://www.freetogame.com/open/tarisland</string>
+    <string name="game_image">Game Image</string>
+</resources>
