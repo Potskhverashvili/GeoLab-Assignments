@@ -3,6 +3,7 @@ package com.example.freegames.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log.d
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +20,7 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        d("log", "onCreate")
         initRecycler()
         setCollectors()
         setListener()
@@ -45,5 +47,13 @@ class GameActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(gameModel.gameUrl))
             startActivity(intent)
         }
+    }
+
+
+
+    override fun onRestart() {
+        super.onRestart()
+
+        d("log", "onRestart")
     }
 }
