@@ -7,6 +7,5 @@ import retrofit2.http.GET
 interface BookApi {
 
     @GET("books")
-
     suspend fun getBookList(): Response<BookModel>
 }

@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.harrypotter.databinding.FragmentBookListBinding
+import com.example.harrypotter.presentation.ViewModel.BookViewModel
 import com.example.harrypotter.presentation.adapter.BookAdapter
+import kotlinx.coroutines.launch
 
 class BookListFragment : Fragment() {
 
-    private val bookAdapter = BookAdapter()
     private lateinit var binding: FragmentBookListBinding
-
+    private val bookAdapter = BookAdapter()
+    private val viewModel by viewModels<BookViewModel>()
 
     // --- Init Recycler Method ---
     private fun initRecycler() {
@@ -21,7 +24,11 @@ class BookListFragment : Fragment() {
     }
 
     private fun setCollector() {
-        lifecycleScope.coroutineContext
+        lifecycleScope.launch {
+            viewModel.booksFlow.collect {
+                bookAdapter.updateGameList(it)
+            }
+        }
     }
 
 
@@ -35,12 +42,10 @@ class BookListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        initRecycler()
+        setCollector()
     }
-
-
 }

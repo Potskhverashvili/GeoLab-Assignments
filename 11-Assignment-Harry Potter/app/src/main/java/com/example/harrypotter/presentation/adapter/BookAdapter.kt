@@ -5,16 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.harrypotter.data.model.BookDetails
 import com.example.harrypotter.data.model.BookModel
 import com.example.harrypotter.databinding.ItemBookBinding
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     // Property
-    private var currentBookList = emptyList<BookModel.Detail>()
+    private var currentBookList = emptyList<BookDetails>()
 
     //-------------------- List Update -------------
-    fun updateGameList(newBookList: List<BookModel.Detail>) {
+    fun updateGameList(newBookList: List<BookDetails>) {
         val callBack = GameCallBack(this.currentBookList, newBookList)
         val diffResult = DiffUtil.calculateDiff(callBack)
         this.currentBookList = newBookList
@@ -26,7 +27,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     inner class BookViewHolder(private val binding: ItemBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentBook: BookModel.Detail) = with(binding) {
+        fun bind(currentBook: BookDetails) = with(binding) {
             bookNameTextView.text = currentBook.attributes.bookName
 
             Glide.with(root)
@@ -55,8 +56,8 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     // ------------------------- DiffUtil CalBack --------------------
     class GameCallBack(
-        private val oldList: List<BookModel.Detail>,
-        private val newList: List<BookModel.Detail>,
+        private val oldList: List<BookDetails>,
+        private val newList: List<BookDetails>,
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize() = oldList.size
