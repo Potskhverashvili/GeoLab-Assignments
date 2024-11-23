@@ -18,7 +18,6 @@ class BookViewModel : ViewModel() {
         getBooks()
     }
 
-    // Function to fetch games from the repository and emit them to the flow
     private fun getBooks() = viewModelScope.launch {
         val booksFromApi = bookRepository.getBooksList()?.data ?: emptyList()
         booksFlow.emit(booksFromApi)

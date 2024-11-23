@@ -17,8 +17,6 @@ class BookDetailsViewModel : ViewModel() {
     val bookDetailsFlow = MutableStateFlow<BookDetails?>(null)
 
 
-
-    // Function to fetch games from the repository and emit them to the flow
      fun getBookDetails(id : String) = viewModelScope.launch {
         val bookDetailsFromApi = bookRepository.getBookDetails(id)
         d("myLog", "Details: ${bookDetailsFromApi?.data?.attributes?.summary}")

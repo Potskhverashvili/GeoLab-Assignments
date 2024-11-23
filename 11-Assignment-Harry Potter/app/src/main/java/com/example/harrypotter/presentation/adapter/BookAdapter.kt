@@ -16,8 +16,8 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     var onClickDetail: (BooksDetails) -> Unit = {}
 
     //-------------------- List Update -------------
-    fun updateGameList(newBookList: List<BooksDetails>) {
-        val callBack = GameCallBack(this.currentBookList, newBookList)
+    fun updateBookList(newBookList: List<BooksDetails>) {
+        val callBack = BookCallBack(this.currentBookList, newBookList)
         val diffResult = DiffUtil.calculateDiff(callBack)
         this.currentBookList = newBookList
         diffResult.dispatchUpdatesTo(this)
@@ -60,25 +60,24 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
 
     // ------------------------- DiffUtil CalBack --------------------
-    class GameCallBack(
+    class BookCallBack(
         private val oldList: List<BooksDetails>,
         private val newList: List<BooksDetails>,
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize() = oldList.size
-
         override fun getNewListSize() = newList.size
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            val oldGame = oldList[oldItemPosition]
-            val newGame = newList[newItemPosition]
-            return oldGame.id == newGame.id
+            val oldBook = oldList[oldItemPosition]
+            val newBook = newList[newItemPosition]
+            return oldBook.id == newBook.id
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            val oldGame = oldList[oldItemPosition]
-            val newGame = newList[newItemPosition]
-            return oldGame == newGame
+            val oldBook = oldList[oldItemPosition]
+            val newBook = newList[newItemPosition]
+            return oldBook == newBook
         }
     }
 }

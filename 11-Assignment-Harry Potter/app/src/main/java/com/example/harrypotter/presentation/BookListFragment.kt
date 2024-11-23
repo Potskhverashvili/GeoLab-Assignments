@@ -48,7 +48,7 @@ class BookListFragment : Fragment() {
     private fun setCollector() {
         lifecycleScope.launch {
             bookViewModel.booksFlow.collect {
-                bookAdapter.updateGameList(it)
+                bookAdapter.updateBookList(it)
             }
         }
     }
