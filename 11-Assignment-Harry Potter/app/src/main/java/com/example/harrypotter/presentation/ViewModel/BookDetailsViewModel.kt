@@ -1,26 +1,27 @@
 package com.example.harrypotter.presentation.ViewModel
 
+import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.harrypotter.data.model.BooksDetails
+import com.example.harrypotter.data.model.BookDetails
 import com.example.harrypotter.data.repository.BookRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class BookViewModel : ViewModel() {
+class BookDetailsViewModel : ViewModel() {
+
     // Repo injection
     private val bookRepository = BookRepository()
 
     // Create A MutableStateFlow
-    val booksFlow = MutableStateFlow<List<BooksDetails>>(emptyList())
+    val bookDetailsFlow = MutableStateFlow<BookDetails?>(null)
 
-    init {
-        getBooks()
-    }
+
 
     // Function to fetch games from the repository and emit them to the flow
-    private fun getBooks() = viewModelScope.launch {
-        val booksFromApi = bookRepository.getBooksList()?.data ?: emptyList()
-        booksFlow.emit(booksFromApi)
+     fun getBookDetails(id : String) = viewModelScope.launch {
+        val bookDetailsFromApi = bookRepository.getBookDetails(id)
+        d("myLog", "Details: ${bookDetailsFromApi?.data?.attributes?.summary}")
+        bookDetailsFlow.emit(bookDetailsFromApi)
     }
 }

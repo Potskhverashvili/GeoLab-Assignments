@@ -11,7 +11,6 @@ object RetrofitInstance {
             .build()
     }
 
-
     fun getBookApi(): BookApi {
         return getRetrofit().create(BookApi::class.java)
     }

@@ -3,10 +3,10 @@ package com.example.harrypotter.data.model
 import com.google.gson.annotations.SerializedName
 
 data class BookModel(
-    val data : List<BookDetails>
+    val data : List<BooksDetails>
 )
 
-data class BookDetails(
+data class BooksDetails(
     val id: String,
     val attributes: Attributes,
 )

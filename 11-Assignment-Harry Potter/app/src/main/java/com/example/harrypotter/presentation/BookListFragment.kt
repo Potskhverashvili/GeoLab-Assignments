@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.harrypotter.databinding.FragmentBookListBinding
 import com.example.harrypotter.presentation.ViewModel.BookViewModel
 import com.example.harrypotter.presentation.adapter.BookAdapter
@@ -16,21 +17,7 @@ class BookListFragment : Fragment() {
 
     private lateinit var binding: FragmentBookListBinding
     private val bookAdapter = BookAdapter()
-    private val viewModel by viewModels<BookViewModel>()
-
-    // --- Init Recycler Method ---
-    private fun initRecycler() {
-        binding.bookRecyclerView.adapter = bookAdapter
-    }
-
-    private fun setCollector() {
-        lifecycleScope.launch {
-            viewModel.booksFlow.collect {
-                bookAdapter.updateGameList(it)
-            }
-        }
-    }
-
+    private val bookViewModel by viewModels<BookViewModel>()
 
     // ------------------------------ Override Methods ---------------------
     override fun onCreateView(
@@ -47,5 +34,32 @@ class BookListFragment : Fragment() {
 
         initRecycler()
         setCollector()
+        setListeners()
+    }
+
+
+    // ---------------------------------- Helper Methods ----------------------------
+
+    // --- Init Recycler Method ---
+    private fun initRecycler() {
+        binding.bookRecyclerView.adapter = bookAdapter
+    }
+
+    private fun setCollector() {
+        lifecycleScope.launch {
+            bookViewModel.booksFlow.collect {
+                bookAdapter.updateGameList(it)
+            }
+        }
+    }
+
+    private fun setListeners() {
+        bookAdapter.onClickDetail = {currentBook ->
+        findNavController().navigate(
+                BookListFragmentDirections.bookListFragmentToBookDetailsFragment(
+                    id = currentBook.id
+                )
+            )
+        }
     }
 }

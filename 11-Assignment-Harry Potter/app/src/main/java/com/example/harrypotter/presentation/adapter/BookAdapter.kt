@@ -5,17 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.harrypotter.data.model.BookDetails
-import com.example.harrypotter.data.model.BookModel
+import com.example.harrypotter.data.model.BooksDetails
 import com.example.harrypotter.databinding.ItemBookBinding
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     // Property
-    private var currentBookList = emptyList<BookDetails>()
+    private var currentBookList = emptyList<BooksDetails>()
+
+    var onClickDetail: (BooksDetails) -> Unit = {}
 
     //-------------------- List Update -------------
-    fun updateGameList(newBookList: List<BookDetails>) {
+    fun updateGameList(newBookList: List<BooksDetails>) {
         val callBack = GameCallBack(this.currentBookList, newBookList)
         val diffResult = DiffUtil.calculateDiff(callBack)
         this.currentBookList = newBookList
@@ -27,8 +28,12 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     inner class BookViewHolder(private val binding: ItemBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentBook: BookDetails) = with(binding) {
+        fun bind(currentBook: BooksDetails) = with(binding) {
             bookNameTextView.text = currentBook.attributes.bookName
+
+            bookDetailButton.setOnClickListener {
+                onClickDetail(currentBook)
+            }
 
             Glide.with(root)
                 .load(currentBook.attributes.coverImage)
@@ -56,8 +61,8 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     // ------------------------- DiffUtil CalBack --------------------
     class GameCallBack(
-        private val oldList: List<BookDetails>,
-        private val newList: List<BookDetails>,
+        private val oldList: List<BooksDetails>,
+        private val newList: List<BooksDetails>,
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize() = oldList.size
