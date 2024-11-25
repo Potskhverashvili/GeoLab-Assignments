@@ -31,15 +31,12 @@ class BookListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initRecycler()
         setCollector()
         setListeners()
     }
 
-
     // ---------------------------------- Helper Methods ----------------------------
-
     // --- Init Recycler Method ---
     private fun initRecycler() {
         binding.bookRecyclerView.adapter = bookAdapter
