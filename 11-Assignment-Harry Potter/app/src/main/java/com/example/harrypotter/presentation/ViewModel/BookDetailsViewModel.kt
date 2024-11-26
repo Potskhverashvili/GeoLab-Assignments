@@ -16,10 +16,9 @@ class BookDetailsViewModel : ViewModel() {
     // Create A MutableStateFlow
     val bookDetailsFlow = MutableStateFlow<BookDetails?>(null)
 
-
-     fun getBookDetails(id : String) = viewModelScope.launch {
+    // get details
+    fun getBookDetails(id: String) = viewModelScope.launch {
         val bookDetailsFromApi = bookRepository.getBookDetails(id)
-        d("myLog", "Details: ${bookDetailsFromApi?.data?.attributes?.summary}")
         bookDetailsFlow.emit(bookDetailsFromApi)
     }
 }

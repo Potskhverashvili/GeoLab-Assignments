@@ -3,13 +3,15 @@ package com.example.harrypotter.api
 
 import com.example.harrypotter.data.model.BookDetails
 import com.example.harrypotter.data.model.BookModel
+import com.example.harrypotter.data.model.MovieDetails
+import com.example.harrypotter.data.model.MoviesDetails
 import com.example.harrypotter.data.model.MovieModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 
-interface BookApi {
+interface Api {
 
     @GET("books")
     suspend fun getBookList(): Response<BookModel>
@@ -20,5 +22,8 @@ interface BookApi {
 
     @GET("movies")
     suspend fun getMoviesList() : Response<MovieModel>
+
+    @GET("movies/{id}")
+    suspend fun getMovieDetails(@Path("id") id : String) :Response<MovieDetails>
 
 }

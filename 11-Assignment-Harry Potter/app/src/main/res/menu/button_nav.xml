@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
+
+    <item
+        android:id="@+id/navBooksButton"
+        android:icon="@drawable/ic_book"
+        android:title="Books" />
+
+    <item
+        android:id="@+id/navMoviesButton"
+        android:icon="@drawable/ic_movie"
+        android:title="Movies" />
 </menu>

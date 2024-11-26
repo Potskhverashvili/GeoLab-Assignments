@@ -2,6 +2,7 @@ package com.example.harrypotter.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,7 +13,6 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     // Property
     private var currentBookList = emptyList<BooksDetails>()
-
     var onClickDetail: (BooksDetails) -> Unit = {}
 
     //-------------------- List Update -------------
@@ -34,7 +34,6 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
             bookDetailButton.setOnClickListener {
                 onClickDetail(currentBook)
             }
-
             Glide.with(root)
                 .load(currentBook.attributes.coverImage)
                 .into(bookCoverImageView)

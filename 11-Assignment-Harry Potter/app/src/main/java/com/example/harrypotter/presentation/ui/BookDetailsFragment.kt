@@ -1,4 +1,4 @@
-package com.example.harrypotter.presentation
+package com.example.harrypotter.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,11 +15,13 @@ import kotlinx.coroutines.launch
 
 class BookDetailsFragment : Fragment() {
 
+    // Properties
     private lateinit var binding: FragmentBookDetailsBinding
     private val bookDetailsViewModel by viewModels<BookDetailsViewModel>()
     private val args by navArgs<BookDetailsFragmentArgs>()
 
 
+    //------------------------- Override Methods ----------------------
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,20 +31,20 @@ class BookDetailsFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getBookId()
+        getBookDetailsById()
         setCollector()
     }
 
-
     // ------------------------------ Helper Methods ------------------------
-    private fun getBookId() {
+    // get id
+    private fun getBookDetailsById() {
         bookDetailsViewModel.getBookDetails(args.id)
     }
 
+    // set collector
     private fun setCollector() {
         lifecycleScope.launch {
             bookDetailsViewModel.bookDetailsFlow.collect { bookDetail ->
