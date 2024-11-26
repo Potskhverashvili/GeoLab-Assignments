@@ -53,7 +53,6 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         holder.bind(currentMovieList[position])
     }
 
-
     // ------------------------- DiffUtil CalBack --------------------
     class MovieCallBack(
         private val oldList: List<MoviesDetails>,

@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 
 
 class MovieDetailsFragment : Fragment() {
-
     private lateinit var binding: FragmentMovieDetailsBinding
     private val movieDetailsVieModel by viewModels<MovieDetailsViewModel>()
     private val args by navArgs<MovieDetailsFragmentArgs>()
@@ -31,11 +30,9 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         getMovieDetailsById()
         setCollector()
     }
-
 
     private fun getMovieDetailsById() {
         movieDetailsVieModel.getMovieDetails(args.id)
@@ -51,6 +48,5 @@ class MovieDetailsFragment : Fragment() {
                     .into(binding.movieDetailsImageView)
             }
         }
-
     }
 }

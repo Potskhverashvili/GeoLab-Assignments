@@ -1,6 +1,5 @@
 package com.example.harrypotter.data.model
 
-
 data class MovieDetails(
     val data: MovieData,
 )

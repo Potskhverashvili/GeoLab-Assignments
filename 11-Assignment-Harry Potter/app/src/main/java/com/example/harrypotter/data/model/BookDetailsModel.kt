@@ -1,8 +1,9 @@
 package com.example.harrypotter.data.model
 
 data class BookDetails(
-    val data : BookData
+    val data: BookData,
 )
+
 data class BookData(
     val id: String,
     val type: String,

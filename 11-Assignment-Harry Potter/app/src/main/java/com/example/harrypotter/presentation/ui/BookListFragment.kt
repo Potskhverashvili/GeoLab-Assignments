@@ -1,7 +1,6 @@
 package com.example.harrypotter.presentation.ui
 
 import android.os.Bundle
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.harrypotter.R
 import com.example.harrypotter.databinding.FragmentBookListBinding
 import com.example.harrypotter.presentation.ViewModel.BookViewModel
 import com.example.harrypotter.presentation.adapter.BookAdapter

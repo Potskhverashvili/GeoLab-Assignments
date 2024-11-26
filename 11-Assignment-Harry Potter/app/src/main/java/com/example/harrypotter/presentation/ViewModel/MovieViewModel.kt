@@ -14,14 +14,12 @@ class MovieViewModel : ViewModel() {
     // Create A MutableStateFlow
     val movieFlow = MutableStateFlow<List<MoviesDetails>>(emptyList())
 
-
     init {
         getMovies()
     }
 
     private fun getMovies() = viewModelScope.launch {
         val moviesFromApi = movieRepository.getMovieList()?.data ?: emptyList()
-
         movieFlow.emit(moviesFromApi)
     }
 }

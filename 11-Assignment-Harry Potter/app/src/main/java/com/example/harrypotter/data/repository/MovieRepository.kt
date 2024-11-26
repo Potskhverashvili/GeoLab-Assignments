@@ -1,9 +1,7 @@
 package com.example.harrypotter.data.repository
 
-import android.util.Log.d
 import com.example.harrypotter.api.RetrofitInstance
 import com.example.harrypotter.data.model.MovieDetails
-import com.example.harrypotter.data.model.MoviesDetails
 import com.example.harrypotter.data.model.MovieModel
 
 class MovieRepository {

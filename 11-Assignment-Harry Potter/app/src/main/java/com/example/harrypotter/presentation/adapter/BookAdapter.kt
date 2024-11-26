@@ -2,7 +2,6 @@ package com.example.harrypotter.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -56,7 +55,6 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.bind(currentBookList[position])
     }
-
 
     // ------------------------- DiffUtil CalBack --------------------
     class BookCallBack(

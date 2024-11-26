@@ -1,6 +1,5 @@
 package com.example.harrypotter.presentation.ViewModel
 
-import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.harrypotter.data.model.BookDetails
@@ -9,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class BookDetailsViewModel : ViewModel() {
-
     // Repo injection
     private val bookRepository = BookRepository()
 

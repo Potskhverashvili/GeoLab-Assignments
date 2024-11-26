@@ -20,7 +20,6 @@ class BookDetailsFragment : Fragment() {
     private val bookDetailsViewModel by viewModels<BookDetailsViewModel>()
     private val args by navArgs<BookDetailsFragmentArgs>()
 
-
     //------------------------- Override Methods ----------------------
     override fun onCreateView(
         inflater: LayoutInflater,

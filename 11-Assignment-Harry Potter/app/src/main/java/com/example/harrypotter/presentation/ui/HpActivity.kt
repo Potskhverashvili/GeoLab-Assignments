@@ -13,11 +13,8 @@ class HpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
         toggleBottomButtons()
     }
-
 
     private fun toggleBottomButtons() {
         val navHostFragment =
@@ -31,15 +28,14 @@ class HpActivity : AppCompatActivity() {
                     navController.navigate(R.id.bookListFragment)
                     true
                 }
+
                 R.id.navMoviesButton -> {
                     navController.navigate(R.id.moviesFragment)
                     true
                 }
-                // Add more cases as needed
+
                 else -> false
             }
         }
     }
-
-
 }
