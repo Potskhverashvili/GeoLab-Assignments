@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JokesApp</string>
+    <string name="joke_setup">There are 10 types of people in this world...</string>
+    <string name="joke_type">Programming</string>
+    <string name="joke_punchline">Those who understand binary and those who don\'t</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_joke_button_text">Save</string>
+    <string name="new_joke_button_Text">New Joke</string>
+</resources>
