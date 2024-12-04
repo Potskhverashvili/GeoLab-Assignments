@@ -9,13 +9,19 @@ import com.example.jokesapp.databinding.ItemJokeBinding
 import com.example.jokesapp.domain.model.Joke
 
 class JokeAdapter : ListAdapter<Joke, JokeAdapter.JokeViewHolder>(JokeItemCallBack()) {
+
+    var onDeleteClick: (Joke) -> Unit = {} // Lambda function to delete joke
+
     // ------------------------- View Holder ------------------------
-    class JokeViewHolder(private val binding: ItemJokeBinding) :
+    inner class JokeViewHolder(private val binding: ItemJokeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(joke: Joke) = with(binding) {
             jokeTypeTextView.text = joke.type
             jokeSetupTextView.text = joke.setup
             jokePunchlineTextView.text = joke.punchline
+            deleteImageView.setOnClickListener {
+                onDeleteClick(joke)
+            }
         }
     }
 
@@ -25,8 +31,7 @@ class JokeAdapter : ListAdapter<Joke, JokeAdapter.JokeViewHolder>(JokeItemCallBa
         override fun areContentsTheSame(oldItem: Joke, newItem: Joke) = oldItem == newItem
     }
 
-
-    //------------------------------ Override Methods --------------------------
+    //------------------------ Override Methods --------------------------
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
         return JokeViewHolder(
             ItemJokeBinding.inflate(

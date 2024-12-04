@@ -32,7 +32,7 @@ class JokeRepositoryImpl : JokeRepository {
     }
 
     // ------------- Get Jokes From Room Database-----------------
-    override  fun getJokeFromRoom(): Flow<List<Joke>> {
+    override fun getJokeFromRoom(): Flow<List<Joke>> {
         return jokeDao.getJokes().map { jokeEntityList ->
             jokeEntityList.map { jokeEntity ->
                 jokeEntity.toJoke()
@@ -40,5 +40,8 @@ class JokeRepositoryImpl : JokeRepository {
         }
     }
 
-
+    // -------- Delete Joke -----------
+    override suspend fun deleteJoke(joke: Joke) {
+        jokeDao.deleteJoke(joke.toJokeEntity())
+    }
 }

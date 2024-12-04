@@ -6,9 +6,7 @@ sealed interface OperationStatus<T> {
 }
 
 // ---------------------- Mapper Method---------------------
-fun <FromData, ToData> OperationStatus<FromData>.map(
-    mapper: (FromData) -> ToData,
-): OperationStatus<ToData> {
+fun <FromData, ToData> OperationStatus<FromData>.map(mapper: (FromData) -> ToData, ): OperationStatus<ToData> {
     return when (this) {
         is OperationStatus.Success -> OperationStatus.Success(mapper(value))
         is OperationStatus.Failure -> OperationStatus.Failure(exception)

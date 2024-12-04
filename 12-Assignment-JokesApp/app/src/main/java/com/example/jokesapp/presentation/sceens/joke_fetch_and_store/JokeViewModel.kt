@@ -1,6 +1,5 @@
 package com.example.jokesapp.presentation.sceens.joke_fetch_and_store
 
-import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jokesapp.core.onFailure
@@ -12,14 +11,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class JokeViewModel : ViewModel() {
-    // Repository
+
+    // --- Repository ---
     private val jokeRepository = JokeRepositoryImpl()
 
-    // Flows
+    // --- Flows ---
     val jokeFlow = MutableStateFlow<Joke?>(null)
     val showErrorFlow = MutableSharedFlow<Exception>()
 
-    // -------- Get Joke From Api ----------
+    // --- Get Joke From Api ----
     fun getJoke() = viewModelScope.launch {
         jokeRepository.getRandomJoke()
             .onSuccess { joke ->

@@ -4,7 +4,7 @@ import com.example.jokesapp.data.local.entity.JokeEntity
 import com.example.jokesapp.data.remote.dto.JokeDto
 import com.example.jokesapp.domain.model.Joke
 
-// JokeDto to Joke
+// --- JokeDto to Joke ---
 fun JokeDto.toJoke() = Joke(
     type = type,
     setup = setup,
@@ -12,8 +12,7 @@ fun JokeDto.toJoke() = Joke(
     id = id
 )
 
-
-// Joke to jokeEntity
+// --- Joke to jokeEntity ---
 fun Joke.toJokeEntity() = JokeEntity(
     type = type,
     setup = setup,
@@ -21,7 +20,7 @@ fun Joke.toJokeEntity() = JokeEntity(
     id = id
 )
 
-// JokeEntity to Joke
+// --- JokeEntity to Joke ---
 fun JokeEntity.toJoke() = Joke(
     type = type,
     setup = setup,

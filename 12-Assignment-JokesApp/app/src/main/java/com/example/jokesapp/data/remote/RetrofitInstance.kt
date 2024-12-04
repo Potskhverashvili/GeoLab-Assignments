@@ -5,10 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
+    private const val BASE_URL = "https://official-joke-api.appspot.com/"
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://official-joke-api.appspot.com/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val jokeService = retrofit.create(JokeService::class.java)
+    val jokeService: JokeService = retrofit.create(JokeService::class.java)
 }

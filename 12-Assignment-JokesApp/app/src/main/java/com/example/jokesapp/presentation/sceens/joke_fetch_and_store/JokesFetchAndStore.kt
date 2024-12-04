@@ -1,7 +1,6 @@
 package com.example.jokesapp.presentation.sceens.joke_fetch_and_store
 
 import android.os.Bundle
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.jokesapp.databinding.FragmentJokeFetchAndStoreBinding
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 
 class JokesFetchAndStore : Fragment() {
-
     private lateinit var binding: FragmentJokeFetchAndStoreBinding
-
-    //View Model
     private val viewModel by viewModels<JokeViewModel>()
 
-    // -- on Create View --
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,31 +24,34 @@ class JokesFetchAndStore : Fragment() {
         return binding.root
     }
 
-    // -- on View Create --
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
         setCollectors()
     }
 
-    // Set Listeners
+    //--------- Set Listeners ----------
     private fun setListeners() = with(binding) {
-        // get joke from api
-        getNewJokeButton.setOnClickListener {
+
+        getNewJokeButton.setOnClickListener { // get joke from api
             viewModel.getJoke()
         }
-        // save joke to Room Database
-        saveJokeButton.setOnClickListener {
+
+        saveJokeButton.setOnClickListener { // save joke to Room Database
             viewModel.saveJoke()
+            viewModel.getJoke()
         }
 
-        // go to the storage page
-        storageJokesButton.setOnClickListener {
-            findNavController().navigate(JokesFetchAndStoreDirections.actionJokesFetchAndStoreToJokesListFragment())
+        storageJokesButton.setOnClickListener { // go to the storage page
+            findNavController()
+                .navigate(
+                    JokesFetchAndStoreDirections
+                        .actionJokesFetchAndStoreToJokesListFragment()
+                )
         }
     }
 
-    // Set Collectors
+    // -------- Set Collectors ----------
     private fun setCollectors() = viewLifecycleOwner.lifecycleScope.launch {
         viewModel.jokeFlow.collect { joke ->
             binding.jokeTypeTextView.text = joke?.type ?: "Click Get New Joke"

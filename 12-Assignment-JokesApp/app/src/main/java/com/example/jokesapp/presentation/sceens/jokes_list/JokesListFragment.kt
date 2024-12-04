@@ -1,7 +1,6 @@
 package com.example.jokesapp.presentation.sceens.jokes_list
 
 import android.os.Bundle
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +31,7 @@ class JokesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         setCollectors()
+        setListeners()
     }
 
     // ----------- Init Views --------
@@ -44,6 +44,15 @@ class JokesListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.jokesListFlow.collect {
                 jokeAdapter.submitList(it)
+            }
+        }
+    }
+
+    // ----------- Set Listeners -------------
+    private fun setListeners()  {
+        jokeAdapter.onDeleteClick = { joke ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.deleteJoke(joke)
             }
         }
     }

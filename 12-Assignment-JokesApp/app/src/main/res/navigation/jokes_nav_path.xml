@@ -5,7 +5,6 @@
     android:id="@+id/jokes_nav_path"
     app:startDestination="@id/jokesFetchAndStore">
 
-
     <fragment
         android:id="@+id/jokesFetchAndStore"
         android:name="com.example.jokesapp.presentation.sceens.joke_fetch_and_store.JokesFetchAndStore"
@@ -20,5 +19,5 @@
         android:id="@+id/jokesListFragment"
         android:name="com.example.jokesapp.presentation.sceens.jokes_list.JokesListFragment"
         android:label="JokesListFragment"
-        tools:layout="@layout/fragment_jokes_list"/>
+        tools:layout="@layout/fragment_jokes_list" />
 </navigation>
