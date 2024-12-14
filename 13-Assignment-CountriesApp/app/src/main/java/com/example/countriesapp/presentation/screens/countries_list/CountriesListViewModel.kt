@@ -15,13 +15,13 @@ class CountriesListViewModel(
 ) : ViewModel() {
 
     val countriesFlow = MutableStateFlow<List<Country>>(emptyList())
-
     val showErrorFlow = MutableSharedFlow<Exception>()
 
     init {
         getCountries()
     }
 
+    // ----- Get Countries List ------
     private fun getCountries() = viewModelScope.launch {
         countriesRepository.getCountriesList()
             .onSuccess {
@@ -29,8 +29,5 @@ class CountriesListViewModel(
             }.onFailure {
                 showErrorFlow.emit(it)
             }
-
     }
-
-
 }

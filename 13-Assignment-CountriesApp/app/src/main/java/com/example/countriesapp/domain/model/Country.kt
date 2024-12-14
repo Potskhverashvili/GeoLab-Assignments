@@ -6,7 +6,7 @@ import com.example.countriesapp.data.remote.dto.Name
 data class Country(
     val name: Name?,
     val capital: List<String>?,
-    val flags: Flags?,
+    val flag: Flags?,
 )
 
 

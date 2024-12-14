@@ -9,7 +9,7 @@ import com.example.countriesapp.domain.model.CountryDetails
 fun CountryDto.toCountry() = Country(
     name = name,
     capital = capital,
-    flags = flags
+    flag = flags
 )
 
 // ---- CountryDetailsDto to CountryDetails -----
