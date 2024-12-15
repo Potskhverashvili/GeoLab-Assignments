@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -33,7 +34,6 @@ class CountryDetailsFragment : Fragment() {
         setCollectors()
     }
 
-
     // ---- Get Country Details -----
     private fun getCountryDetails() = lifecycleScope.launch {
         viewModel.getCountryDetails(args.countryName)
@@ -41,6 +41,7 @@ class CountryDetailsFragment : Fragment() {
 
     // ------ Set Collectors -------
     private fun setCollectors() = with(binding) {
+        // Details
         lifecycleScope.launch {
             viewModel.countryDetailsFlow.collect {
                 val countryDetails = it?.get(0)
@@ -49,6 +50,14 @@ class CountryDetailsFragment : Fragment() {
                 Glide.with(root)
                     .load(countryDetails?.flags?.flag)
                     .into(flagImageView)
+            }
+        }
+
+        // Error
+        lifecycleScope.launch {
+            viewModel.showErrorFlow.collect {
+                Toast.makeText(context, "Something went wrong: ${it.cause}", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
