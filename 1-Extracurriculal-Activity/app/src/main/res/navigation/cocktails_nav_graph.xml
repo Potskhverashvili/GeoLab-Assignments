@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cocktails_nav_graph"
+    app:startDestination="@id/cocktailsListFragment">
+
+    <fragment
+        android:id="@+id/cocktailsListFragment"
+        android:name="com.example.cocktailapp.presentation.screens.cocktails_list.CocktailsListFragment"
+        android:label="fragment_cocktails_list"
+        tools:layout="@layout/fragment_cocktails_list" />
+</navigation>
