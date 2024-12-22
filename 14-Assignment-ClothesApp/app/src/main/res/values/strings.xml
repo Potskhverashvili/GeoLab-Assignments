@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ClothesApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="price">$120</string>
+    <string name="product_name">Recycle Boucle Knit Cardigan Pink</string>
+    <string name="title">MOHAN</string>
+    <string name="cloth_image">Cloth Image</string>
+    <string name="favorite">Favorite</string>
+</resources>
