@@ -122,8 +122,6 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_cloth" />
-
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
