@@ -91,7 +91,6 @@
             android:textColor="#555555" />
     </androidx.appcompat.widget.Toolbar>
 
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
