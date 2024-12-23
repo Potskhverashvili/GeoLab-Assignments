@@ -7,4 +7,10 @@
     <string name="title">MOHAN</string>
     <string name="cloth_image">Cloth Image</string>
     <string name="favorite">Favorite</string>
+    <string name="logo">Logo</string>
+    <string name="menu">menu</string>
+    <string name="_4500_apparel">4500 Apparel</string>
+    <string name="search">search</string>
+    <string name="gallery">gallery</string>
+    <string name="filter">filter</string>
 </resources>
