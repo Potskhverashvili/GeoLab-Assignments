@@ -139,7 +139,6 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_cloth" />
 
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -197,7 +196,6 @@
                 android:layout_marginBottom="24dp"
                 android:src="@drawable/ic_line" />
 
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,26 +230,14 @@
 
             </LinearLayout>
 
-
-            <!-- <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="24dp"
-                 android:textAlignment="center"
-                 android:background="@drawable/shape_bottom_text"
-                 android:text="Copyright© OpenUI All Rights Reserved."
-                 />-->
-
-
-            <androidx.appcompat.widget.Toolbar
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tooltipText="Copyright© OpenUI All Rights Reserved." />
-
-
-
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_bottom_text"
+                android:padding="8dp"
+                android:text="Copyright© OpenUI All Rights Reserved."
+                android:textAlignment="center" />
         </LinearLayout>
-
-
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
