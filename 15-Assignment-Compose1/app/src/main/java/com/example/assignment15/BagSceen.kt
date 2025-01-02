@@ -1,9 +1,13 @@
 package com.example.assignment15
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -12,8 +16,10 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,6 +39,11 @@ fun BagScreen() {
 
     // Save index number of tab when user click on Bar item
     val selectedItem = remember { mutableIntStateOf(0) }
+
+    // Text for textField
+    var text = remember { mutableStateOf("") }
+
+    var totalAmount = remember { mutableStateOf(0) }
 
     Scaffold(
         // ------------------------ Top Bar -------------------------
@@ -114,7 +126,6 @@ fun BagScreen() {
             }
         }
     ) { paddingValues ->
-        
 
         Column(
             modifier = Modifier.padding(paddingValues)
@@ -144,6 +155,36 @@ fun BagScreen() {
             )
 
             // ------------------- Text Field --------------
+
+           /* TextField(
+                value = text,
+                onValueChange = { newText ->
+                    text = newText
+                },
+                label = { Text(text = "Enter your promo code") }
+            )
+
+
+            // -------------------- Total Amount ---------------
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text ="Total amount: ")
+
+                Text(text = totalAmount.toString())
+            }*/
+
+            // ------------------- Check out button ------------------
+            Button(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .background(Color.Red)
+                    .fillMaxWidth(),
+                onClick = {}
+            ) {
+                Text(text = "CHECK OUT")
+            }
+
         }
 
     }
