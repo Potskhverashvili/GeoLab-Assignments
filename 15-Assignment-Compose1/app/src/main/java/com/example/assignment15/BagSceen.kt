@@ -1,5 +1,7 @@
 package com.example.assignment15
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,14 +15,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.selects.select
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,6 +37,7 @@ fun BagScreen() {
         // ------------------------ Top Bar -------------------------
         topBar = {
             LargeTopAppBar(
+
                 title = {
                     Text(
                         text = "My Bag",
@@ -103,22 +105,48 @@ fun BagScreen() {
                             Text(
                                 text = item,
                                 textAlign = TextAlign.Center,
-                                color = if(selectedItem.intValue == index) Color.Red else Color.Black
+                                color = if (selectedItem.intValue == index) Color.Red else Color.Black
                             )
                         }
                     )
 
                 }
             }
+        }
+    ) { paddingValues ->
+        
 
+        Column(
+            modifier = Modifier.padding(paddingValues)
+        ) {
+            // --------------------- Products ----------------------
+            Product(
+                R.drawable.img_product1,
+                "Pullover",
+                53,
+                "Black",
+                "L"
+            )
+            Product(
+                R.drawable.img_product2,
+                "T-Shirt",
+                30,
+                "Gray",
+                "L"
+            )
 
+            Product(
+                R.drawable.img_product3,
+                "Sport Dress",
+                43,
+                "Black",
+                "M"
+            )
+
+            // ------------------- Text Field --------------
         }
 
-
-    ) { paddingValues ->
-
     }
-
 }
 
 @Preview
