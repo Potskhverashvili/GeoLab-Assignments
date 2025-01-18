@@ -2,7 +2,6 @@ package com.example.assignment15
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,7 +15,6 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -156,23 +154,23 @@ fun BagScreen() {
 
             // ------------------- Text Field --------------
 
-           /* TextField(
-                value = text,
-                onValueChange = { newText ->
-                    text = newText
-                },
-                label = { Text(text = "Enter your promo code") }
-            )
+            /* TextField(
+                 value = text,
+                 onValueChange = { newText ->
+                     text = newText
+                 },
+                 label = { Text(text = "Enter your promo code") }
+             )
 
 
-            // -------------------- Total Amount ---------------
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text ="Total amount: ")
+             // -------------------- Total Amount ---------------
+             Row(
+                 modifier = Modifier.fillMaxWidth()
+             ) {
+                 Text(text ="Total amount: ")
 
-                Text(text = totalAmount.toString())
-            }*/
+                 Text(text = totalAmount.toString())
+             }*/
 
             // ------------------- Check out button ------------------
             Button(
@@ -186,7 +184,6 @@ fun BagScreen() {
             }
 
         }
-
     }
 }
 
